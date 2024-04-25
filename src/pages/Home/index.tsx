@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+type PokemonListData = {
+  name: string;
+  url: string;
+};
+
 export default function Home() {
-  const [pokemonData, setPokemonData] = useState([]);
+  const [pokemonListData, setPokemonListData] = useState<PokemonListData[]>([]);
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -12,7 +17,7 @@ export default function Home() {
 
         const data = await res.json();
 
-        setPokemonData(data.results);
+        setPokemonListData(data.results);
       } catch (err) {
         console.error("Error fetching data:", err);
       }
@@ -23,13 +28,13 @@ export default function Home() {
 
   return (
     <>
-      {pokemonData.length > 0 ? (
+      {pokemonListData.length > 0 ? (
         <ul>
-          {pokemonData.map((pokemon) => {
-            const { name, url } = pokemon;
+          {pokemonListData.map((pokemon) => {
+            const { name } = pokemon;
             return (
               <li key={name}>
-                <Link to={url}>{name}</Link>
+                <Link to={`/pokemon/${name}`}>{name}</Link>
               </li>
             );
           })}
