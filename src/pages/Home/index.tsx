@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { SyntheticEvent, KeyboardEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 type PokemonListData = {
@@ -7,7 +7,9 @@ type PokemonListData = {
 };
 
 export default function Home() {
-  const [pokemonListData, setPokemonListData] = useState<PokemonListData[]>([]);
+  const [filteredPokemon, setFilteredPokemon] = useState<PokemonListData[]>([]);
+  const [allPokemon, setAllPokemon] = useState<PokemonListData[]>([]);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     const fetchPokemon = async () => {
@@ -17,7 +19,8 @@ export default function Home() {
 
         const data = await res.json();
 
-        setPokemonListData(data.results);
+        setFilteredPokemon(data.results);
+        setAllPokemon(data.results);
       } catch (err) {
         console.error("Error fetching data:", err);
       }
@@ -26,11 +29,40 @@ export default function Home() {
     fetchPokemon();
   }, []);
 
+  const handleSearchValueChange = (e: SyntheticEvent) => {
+    const value = (e.target as HTMLInputElement).value;
+    setSearchValue(value.toLowerCase());
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") handleSubmit();
+    if (e.key === "Escape") handleClear();
+  };
+
+  const handleSubmit = () => {
+    setFilteredPokemon(
+      allPokemon.filter((pokemon) => pokemon.name.includes(searchValue))
+    );
+  };
+
+  const handleClear = () => {
+    setFilteredPokemon(allPokemon);
+    setSearchValue("");
+  };
+
   return (
     <>
-      {pokemonListData.length > 0 ? (
+      <input
+        value={searchValue}
+        onChange={handleSearchValueChange}
+        onKeyDown={handleKeyDown}
+        placeholder={"Search Pokemon"}
+      />
+      <button onClick={handleSubmit}>search</button>
+      <button onClick={handleClear}>clear</button>
+      {filteredPokemon.length > 0 ? (
         <ul>
-          {pokemonListData.map((pokemon) => {
+          {filteredPokemon.map((pokemon) => {
             const { name } = pokemon;
             return (
               <li key={name}>
