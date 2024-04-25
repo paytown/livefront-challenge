@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 type PokemonDetails = {
   name: string;
   moves?: { move: { name: string } }[];
+  sprites?: { front_default: string };
   types?: { type: { name: string } }[];
 };
 
@@ -33,6 +34,12 @@ export default function PokemonDetails() {
       {pokemonData ? (
         <div>
           <h2>{pokemonData.name}</h2>
+          {pokemonData?.sprites && (
+            <img
+              src={pokemonData.sprites.front_default}
+              alt={pokemonData.name}
+            />
+          )}
           {pokemonData?.moves && (
             <div>
               <h4>moves</h4>
