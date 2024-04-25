@@ -1,5 +1,7 @@
 import { SyntheticEvent, KeyboardEvent, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import fetchData from "../../utils/fetchData";
+import Search from "../../components/Search";
+import PokemonList from "../../components/PokemonList";
 
 type PokemonListData = {
   name: string;
@@ -12,12 +14,11 @@ export default function Home() {
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
-    const fetchPokemon = async () => {
+    const fetchPokemonList = async () => {
       try {
-        const res = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=151");
-        if (!res.ok) throw new Error("Error fetching data.");
-
-        const data = await res.json();
+        const data = await fetchData(
+          "https://pokeapi.co/api/v2/pokemon/?limit=151"
+        );
 
         setFilteredPokemon(data.results);
         setAllPokemon(data.results);
@@ -26,10 +27,10 @@ export default function Home() {
       }
     };
 
-    fetchPokemon();
+    fetchPokemonList();
   }, []);
 
-  const handleSearchValueChange = (e: SyntheticEvent) => {
+  const handleValueChange = (e: SyntheticEvent) => {
     const value = (e.target as HTMLInputElement).value;
     setSearchValue(value.toLowerCase());
   };
@@ -51,29 +52,15 @@ export default function Home() {
   };
 
   return (
-    <>
-      <input
-        value={searchValue}
-        onChange={handleSearchValueChange}
-        onKeyDown={handleKeyDown}
-        placeholder={"Search Pokemon"}
+    <div>
+      <Search
+        searchValue={searchValue}
+        handleValueChange={handleValueChange}
+        handleKeyDown={handleKeyDown}
+        handleSubmit={handleSubmit}
+        handleClear={handleClear}
       />
-      <button onClick={handleSubmit}>search</button>
-      <button onClick={handleClear}>clear</button>
-      {filteredPokemon.length > 0 ? (
-        <ul>
-          {filteredPokemon.map((pokemon) => {
-            const { name } = pokemon;
-            return (
-              <li key={name}>
-                <Link to={`/pokemon/${name}`}>{name}</Link>
-              </li>
-            );
-          })}
-        </ul>
-      ) : (
-        <p>No Results Found</p>
-      )}
-    </>
+      <PokemonList filteredPokemon={filteredPokemon} />
+    </div>
   );
 }
