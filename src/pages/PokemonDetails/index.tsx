@@ -32,7 +32,6 @@ export default function PokemonDetails() {
     if (pokemonData?.moves) setMoveLimit(pokemonData.moves.length);
   };
 
-  // TODO: Consider breaking into components
   return (
     <div>
       {pokemonData ? (

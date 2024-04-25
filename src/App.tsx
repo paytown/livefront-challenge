@@ -4,10 +4,6 @@ import Home from "./pages/Home";
 import Error from "./pages/Error";
 import PokemonDetails from "./pages/PokemonDetails";
 
-// IDEA:
-// Pokedex with search functionality
-// Clicking Pokemon opens detail page
-
 const router = createBrowserRouter([
   {
     path: "/",

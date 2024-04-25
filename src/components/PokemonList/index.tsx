@@ -2,9 +2,13 @@ import { Link } from "react-router-dom";
 
 type FilteredPokemon = {
   filteredPokemon: { name: string; url: string }[];
+  isLoading: boolean;
 };
 
-export default function PokemonList({ filteredPokemon }: FilteredPokemon) {
+export default function PokemonList({
+  filteredPokemon,
+  isLoading,
+}: FilteredPokemon) {
   return (
     <div>
       {filteredPokemon.length > 0 ? (
@@ -18,8 +22,10 @@ export default function PokemonList({ filteredPokemon }: FilteredPokemon) {
             );
           })}
         </ul>
+      ) : isLoading ? (
+        <p>Loading Pokémon...</p>
       ) : (
-        <p>No Results Found</p>
+        <p>No results found.</p>
       )}
     </div>
   );

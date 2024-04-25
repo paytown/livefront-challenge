@@ -12,6 +12,7 @@ export default function Home() {
   const [filteredPokemon, setFilteredPokemon] = useState<PokemonListData[]>([]);
   const [allPokemon, setAllPokemon] = useState<PokemonListData[]>([]);
   const [searchValue, setSearchValue] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchPokemonList = async () => {
@@ -22,8 +23,10 @@ export default function Home() {
 
         setFilteredPokemon(data.results);
         setAllPokemon(data.results);
+        setIsLoading(false);
       } catch (err) {
         console.error("Error fetching data:", err);
+        setIsLoading(false);
       }
     };
 
@@ -60,7 +63,7 @@ export default function Home() {
         handleSubmit={handleSubmit}
         handleClear={handleClear}
       />
-      <PokemonList filteredPokemon={filteredPokemon} />
+      <PokemonList filteredPokemon={filteredPokemon} isLoading={isLoading} />
     </div>
   );
 }
