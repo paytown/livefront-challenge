@@ -5,4 +5,5 @@ export default {
     "^.+\\.tsx?$": "ts-jest",
     // process `*.tsx` files with `ts-jest`
   },
+  setupFilesAfterEnv: ["jest-fetch-mock"],
 };
