@@ -40,6 +40,10 @@ button {
   }
 }
 
+.btn-small {
+  padding: var(--padding-s) var(--padding-m);
+}
+
 input {
   border-radius: 8px;
   border: 1px solid black;

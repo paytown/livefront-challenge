@@ -1,0 +1,20 @@
+.pokemon-details-wrapper {
+  display: grid;
+  gap: var(--padding-m);
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--padding-xl);
+  }
+
+  h2 {
+    text-transform: capitalize;
+  }
+}
+
+.pokemon-type {
+  padding: var(--padding-xs) var(--padding-s);
+  border-radius: 4px;
+  margin-bottom: var(--padding-s);
+  width: auto;
+}
