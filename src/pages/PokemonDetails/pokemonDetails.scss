@@ -1,6 +1,6 @@
 .pokemon-details-wrapper {
   display: grid;
-  gap: var(--padding-m);
+  gap: var(--padding-s);
 
   @media (min-width: 1024px) {
     grid-template-columns: 1fr 1fr 1fr;
