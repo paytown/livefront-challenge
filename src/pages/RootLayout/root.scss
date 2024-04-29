@@ -1,0 +1,35 @@
+main,
+header {
+  display: flex;
+  justify-content: center;
+}
+
+header {
+  background-color: var(--blue-100);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 var(--padding-m);
+}
+
+nav,
+.container {
+  width: var(--max-content);
+  max-width: var(--max-content);
+
+  @media (min-width: 1024px) {
+    padding: 0 var(--padding-xl);
+  }
+}
+
+main {
+  padding: var(--padding-m);
+
+  @media (min-width: 1024px) {
+    padding: var(--padding-l) 0;
+  }
+}

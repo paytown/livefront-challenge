@@ -1,0 +1,15 @@
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-m);
+}
+
+.search-btn-wrapper {
+  display: grid;
+  gap: var(--padding-s);
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--padding-m);
+  }
+}

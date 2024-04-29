@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./pokemonList.scss";
 
 type FilteredPokemon = {
   filteredPokemon: { name: string; url: string }[];
@@ -16,8 +17,10 @@ export default function PokemonList({
           {filteredPokemon.map((pokemon) => {
             const { name } = pokemon;
             return (
-              <li key={name}>
-                <Link to={`/pokemon/${name}`}>{name}</Link>
+              <li key={name} className="pokemon-list-item">
+                <Link to={`/pokemon/${name}`} className="pokemon-list-link">
+                  {name}
+                </Link>
               </li>
             );
           })}

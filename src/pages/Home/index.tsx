@@ -1,7 +1,14 @@
-import { SyntheticEvent, KeyboardEvent, useEffect, useState } from "react";
+import {
+  SyntheticEvent,
+  KeyboardEvent,
+  useEffect,
+  useState,
+  FormEvent,
+} from "react";
 import fetchData from "../../utils/fetchData";
 import Search from "../../components/Search";
 import PokemonList from "../../components/PokemonList";
+import "./home.scss";
 
 type PokemonListData = {
   name: string;
@@ -39,23 +46,26 @@ export default function Home() {
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") handleSubmit();
-    if (e.key === "Escape") handleClear();
+    if (e.key === "Escape") handleClear(e);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
     setFilteredPokemon(
       allPokemon.filter((pokemon) => pokemon.name.includes(searchValue))
     );
   };
 
-  const handleClear = () => {
+  const handleClear = (e: FormEvent) => {
+    e.preventDefault();
+
     setFilteredPokemon(allPokemon);
     setSearchValue("");
   };
 
   return (
-    <div>
+    <div className="home-wrapper">
       <Search
         searchValue={searchValue}
         handleValueChange={handleValueChange}

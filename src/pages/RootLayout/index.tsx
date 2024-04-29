@@ -1,16 +1,29 @@
 import { NavLink, Outlet } from "react-router-dom";
+// import { ReactComponent as Logo } from "../../assets/pokeball-icon.svg";
+import "./root.scss";
 
 export default function RootLayout() {
   return (
     <div>
       <header>
         <nav>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/">
+            <Logo />
+            Pokédex
+          </NavLink>
+          <a
+            href="https://github.com/paytown/livefront-challenge"
+            target="_blank"
+          >
+            Github
+          </a>
         </nav>
       </header>
-      <div>
-        <Outlet />
-      </div>
+      <main>
+        <div className="container">
+          <Outlet />
+        </div>
+      </main>
     </div>
   );
 }

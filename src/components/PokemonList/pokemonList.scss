@@ -1,0 +1,15 @@
+.pokemon-list-item:not(:last-child) {
+  border-bottom: 1px solid lightblue;
+}
+
+.pokemon-list-link {
+  display: block;
+  width: 100%;
+  padding: var(--padding-m) var(--padding-s);
+  color: black;
+  text-transform: capitalize;
+
+  &:hover {
+    background-color: pink;
+  }
+}
