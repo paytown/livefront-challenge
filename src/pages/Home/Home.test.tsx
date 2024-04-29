@@ -29,7 +29,7 @@ describe("Home component", () => {
   test("renders Search and PokemonList components which displays pokemon", async () => {
     render(<Home />);
 
-    expect(screen.getByPlaceholderText("Search Pokemon")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Search Pokémon")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "search" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "clear" })).toBeInTheDocument();
 
@@ -53,7 +53,7 @@ describe("Home component", () => {
     render(<Home />);
     waitFor(() => expect(screen.getByText("Bulbasaur")).toBeInTheDocument());
 
-    fireEvent.change(screen.getByPlaceholderText("Search Pokemon"), {
+    fireEvent.change(screen.getByPlaceholderText("Search Pokémon"), {
       target: { value: "Bulb" },
     });
 
@@ -68,7 +68,7 @@ describe("Home component", () => {
     render(<Home />);
     waitFor(() => expect(screen.getByText("Bulbasaur")).toBeInTheDocument());
 
-    fireEvent.change(screen.getByPlaceholderText("Search Pokemon"), {
+    fireEvent.change(screen.getByPlaceholderText("Search Pokémon"), {
       target: { value: "bULb" },
     });
 
@@ -83,7 +83,7 @@ describe("Home component", () => {
     render(<Home />);
     waitFor(() => expect(screen.getByText("Bulbasaur")).toBeInTheDocument());
 
-    fireEvent.change(screen.getByPlaceholderText("Search Pokemon"), {
+    fireEvent.change(screen.getByPlaceholderText("Search Pokémon"), {
       target: { value: "foo" },
     });
 
@@ -99,7 +99,7 @@ describe("Home component", () => {
     render(<Home />);
     waitFor(() => expect(screen.getByText("Bulbasaur")).toBeInTheDocument());
 
-    fireEvent.change(screen.getByPlaceholderText("Search Pokemon"), {
+    fireEvent.change(screen.getByPlaceholderText("Search Pokémon"), {
       target: { value: "Bulb" },
     });
 
@@ -112,7 +112,7 @@ describe("Home component", () => {
     fireEvent.click(screen.getByRole("button", { name: "clear" }));
 
     waitFor(() => {
-      expect(screen.getByPlaceholderText("Search Pokemon")).toHaveValue("");
+      expect(screen.getByPlaceholderText("Search Pokémon")).toHaveValue("");
 
       expect(screen.getByText("Bulbasaur")).toBeInTheDocument();
       expect(screen.getByText("Ivysaur")).toBeInTheDocument();
@@ -124,7 +124,7 @@ describe("Home component", () => {
     render(<Home />);
     waitFor(() => expect(screen.getByText("Bulbasaur")).toBeInTheDocument());
 
-    fireEvent.change(screen.getByPlaceholderText("Search Pokemon"), {
+    fireEvent.change(screen.getByPlaceholderText("Search Pokémon"), {
       target: { value: "Bulb" },
     });
 
@@ -134,12 +134,12 @@ describe("Home component", () => {
       expect(screen.getByText("Venusaur")).not.toBeInTheDocument();
     });
 
-    fireEvent.keyDown(screen.getByPlaceholderText("Search Pokemon"), {
+    fireEvent.keyDown(screen.getByPlaceholderText("Search Pokémon"), {
       key: "Escape",
     });
 
     waitFor(() => {
-      expect(screen.getByPlaceholderText("Search Pokemon")).toHaveValue("");
+      expect(screen.getByPlaceholderText("Search Pokémon")).toHaveValue("");
 
       expect(screen.getByText("Bulbasaur")).toBeInTheDocument();
       expect(screen.getByText("Ivysaur")).toBeInTheDocument();
