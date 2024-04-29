@@ -1,7 +1,3 @@
-.pokemon-list-item:not(:last-child) {
-  border-bottom: 1px solid lightblue;
-}
-
 .pokemon-list-link {
   display: block;
   width: 100%;
@@ -11,5 +7,11 @@
 
   &:hover {
     background-color: pink;
+  }
+}
+
+.pokemon-list-item:not(:last-child) {
+  .pokemon-list-link {
+    border-bottom: 1px solid lightblue;
   }
 }

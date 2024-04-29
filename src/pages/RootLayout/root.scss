@@ -12,8 +12,18 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 48px;
+  height: 60px;
   padding: 0 var(--padding-m);
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-s);
+
+  img {
+    height: 28px;
+  }
 }
 
 nav,

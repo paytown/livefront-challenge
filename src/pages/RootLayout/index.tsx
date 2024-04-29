@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-// import { ReactComponent as Logo } from "../../assets/pokeball-icon.svg";
+import Logo from "../../assets/pokeball-icon.svg";
 import "./root.scss";
 
 export default function RootLayout() {
@@ -7,8 +7,8 @@ export default function RootLayout() {
     <div>
       <header>
         <nav>
-          <NavLink to="/">
-            <Logo />
+          <NavLink to="/" className={"logo-link"}>
+            <img src={Logo} />
             Pokédex
           </NavLink>
           <a
