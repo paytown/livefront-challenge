@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import Logo from "../../assets/pokeball-icon.svg";
+import Logo from "../../../public/pokeball-icon.svg";
 import "./base.scss";
 import { useEffect, useState } from "react";
 
