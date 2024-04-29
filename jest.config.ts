@@ -3,7 +3,7 @@ export default {
   testEnvironment: "jest-environment-jsdom",
   transform: {
     "^.+\\.tsx?$": "ts-jest",
-    // process `*.tsx` files with `ts-jest`
+    "^.+\\.scss$": "jest-transform-stub",
   },
   setupFilesAfterEnv: ["jest-fetch-mock"],
 };
