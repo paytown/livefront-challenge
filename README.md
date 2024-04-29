@@ -2,14 +2,16 @@
 
 ### Payton Lower
 
-Hello, and thank you for taking the time to review my take home assignment! To run this project you should have Node.js version 18+ installed. You should not need any API keys to run the project. Pull the repo down then run the following commands:
+Hello, and thank you for taking the time to review my take home assignment!
+
+To run this project you should have Node.js version 18+ installed. You should not need any API keys to run the project. Pull the repo down then run the following commands:
 
 ```
 # Install dependencies
 npm i
 
 # Run locally
-npm run local
+npm run dev
 
 # Run Jest tests
 npm run test
