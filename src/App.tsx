@@ -1,5 +1,5 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import RootLayout from "./pages/RootLayout";
+import BaseLayout from "./pages/BaseLayout";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
 import PokemonDetails from "./pages/PokemonDetails";
@@ -7,7 +7,7 @@ import PokemonDetails from "./pages/PokemonDetails";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
+    element: <BaseLayout />,
     errorElement: <Error />,
     children: [
       { index: true, element: <Home /> },

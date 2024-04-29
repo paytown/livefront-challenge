@@ -1,8 +1,8 @@
 import { NavLink, Outlet } from "react-router-dom";
 import Logo from "../../assets/pokeball-icon.svg";
-import "./root.scss";
+import "./base.scss";
 
-export default function RootLayout() {
+export default function BaseLayout() {
   return (
     <div>
       <header>
