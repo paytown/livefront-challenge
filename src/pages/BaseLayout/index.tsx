@@ -1,11 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
 import Logo from "../../../public/pokeball-icon.svg";
 import "./base.scss";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 export default function BaseLayout() {
   const [isScrolled, setIsScrolled] = useState(false);
-  useEffect(() => {
+
+  useLayoutEffect(() => {
     window.onscroll = () => {
       if (window.scrollY > 30) setIsScrolled(true);
       else setIsScrolled(false);
