@@ -27,8 +27,12 @@ export default function Search({
         aria-label={"Search Pokémon"}
       />
       <div className="search-btn-wrapper">
-        <button onClick={handleSubmit}>search</button>
-        <button onClick={handleClear}>clear</button>
+        <button onClick={handleSubmit} className="btn-primary">
+          search
+        </button>
+        <button onClick={handleClear} className="btn-secondary">
+          clear
+        </button>
       </div>
     </form>
   );

@@ -57,7 +57,10 @@ export default function PokemonDetails() {
                 })}
               </ul>
               {pokemonData.moves.length > moveLimit && (
-                <button onClick={handleShowMore} className="btn-small">
+                <button
+                  onClick={handleShowMore}
+                  className="btn-small btn-secondary"
+                >
                   Show All Moves
                 </button>
               )}

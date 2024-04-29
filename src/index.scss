@@ -1,7 +1,13 @@
 :root {
   // Variables
   /* Colors */
-  --blue-100: pink;
+  --off-black: #1d2939;
+  --blue-100: #f5fbff;
+  --blue-300: #e0f2fe;
+  --blue-400: #b9e6fe;
+
+  --blue-700: #026aa2;
+  --blue-900: #0b4a6f;
 
   /* Sizing */
   --max-content: 1280px;
@@ -16,7 +22,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: green;
+  color: var(--off-black);
 }
 
 ul {
@@ -27,14 +33,15 @@ ul {
 
 a {
   text-decoration: none;
+  color: var(--off-black);
 }
 
 button {
   padding: var(--padding-s);
   border-radius: 8px;
-  background-color: pink;
   text-transform: uppercase;
   font-weight: 500;
+  transition: 50ms background-color ease-in;
 
   @media (min-width: 1024px) {
     padding: var(--padding-m);
@@ -43,15 +50,46 @@ button {
 
 .btn-small {
   padding: var(--padding-s) var(--padding-m);
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: var(--blue-900);
+  color: #f5fbff;
+
+  &:hover,
+  &:focus {
+    background-color: var(--blue-700);
+  }
+}
+
+.btn-secondary {
+  background-color: var(--blue-100);
+  border: 1px solid var(--blue-900);
+  color: var(--blue-900);
+
+  &:hover,
+  &:focus {
+    background-color: var(--blue-300);
+  }
 }
 
 input {
   border-radius: 8px;
-  border: 1px solid black;
+  border: 1px solid var(--off-black);
   padding: var(--padding-s);
+  color: var(--off-black);
 
   @media (min-width: 1024px) {
     padding: var(--padding-m);
+  }
+}
+
+a {
+  color: var(--blue-900);
+
+  &:hover {
+    color: var(--blue-700);
   }
 }
 

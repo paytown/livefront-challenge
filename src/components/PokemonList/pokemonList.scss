@@ -5,12 +5,12 @@
   text-transform: capitalize;
 
   &:hover {
-    background-color: pink;
+    background-color: var(--blue-100);
   }
 }
 
 .pokemon-list-item:not(:last-child) {
   .pokemon-list-link {
-    border-bottom: 1px solid lightblue;
+    border-bottom: 1px solid var(--blue-300);
   }
 }
