@@ -1,0 +1,9 @@
+.home-wrapper {
+  display: grid;
+  gap: var(--padding-l);
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--padding-xxl);
+  }
+}

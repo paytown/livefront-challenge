@@ -1,0 +1,17 @@
+.pokemon-list-link {
+  display: block;
+  width: 100%;
+  padding: var(--padding-m) var(--padding-s);
+  text-transform: capitalize;
+  transition: background-color 100ms ease-in-out;
+
+  &:hover {
+    background-color: var(--blue-100);
+  }
+}
+
+.pokemon-list-item:not(:last-child) {
+  .pokemon-list-link {
+    border-bottom: 1px solid var(--blue-300);
+  }
+}

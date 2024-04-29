@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import fetchData from "../../utils/fetchData";
+import PokemonType from "../../components/PokemonType";
+import { initialMoveCount } from "../../utils/constants";
+import "./pokemonDetails.scss";
 
 type PokemonDetails = {
   name: string;
@@ -12,7 +15,7 @@ type PokemonDetails = {
 export default function PokemonDetails() {
   const { id } = useParams();
   const [pokemonData, setPokemonData] = useState<PokemonDetails | null>(null);
-  const [moveLimit, setMoveLimit] = useState(6);
+  const [moveLimit, setMoveLimit] = useState(initialMoveCount);
 
   useEffect(() => {
     const fetchPokemonDetails = async () => {
@@ -33,37 +36,57 @@ export default function PokemonDetails() {
   };
 
   return (
-    <div>
+    <>
       {pokemonData ? (
-        <div>
-          <h2>{pokemonData.name}</h2>
-          {pokemonData?.sprites && (
-            <img
-              src={pokemonData.sprites.front_default}
-              alt={pokemonData.name}
-            />
-          )}
+        <div className="pokemon-details-wrapper">
+          <div>
+            <h2>{pokemonData.name}</h2>
+            {pokemonData?.sprites && (
+              <img
+                src={pokemonData.sprites.front_default}
+                alt={pokemonData.name}
+              />
+            )}
+          </div>
           {pokemonData?.moves && (
             <div>
-              <h4>moves</h4>
+              <h4>Moves</h4>
               <ul>
-                {pokemonData.moves.slice(0, moveLimit).map((pm) => {
+                {pokemonData.moves.slice(0, moveLimit).map((pm, i) => {
                   const move = pm.move.name;
-                  return <li key={move}>{move}</li>;
+                  const isInitHidden = i + 1 > initialMoveCount;
+
+                  return (
+                    <li
+                      key={move}
+                      className={`move ${isInitHidden ? "hidden-move" : ""}`}
+                    >
+                      {move}
+                    </li>
+                  );
                 })}
               </ul>
               {pokemonData.moves.length > moveLimit && (
-                <button onClick={handleShowMore}>Show All Moves</button>
+                <button
+                  onClick={handleShowMore}
+                  className="btn-small btn-secondary"
+                >
+                  Show All Moves
+                </button>
               )}
             </div>
           )}
           {pokemonData?.types && (
             <div>
-              <h4>types</h4>
+              <h4>Types</h4>
               <ul>
                 {pokemonData.types.map((pt) => {
                   const type = pt.type.name;
-                  return <li key={type}>{type}</li>;
+                  return (
+                    <li key={type}>
+                      <PokemonType type={type} />
+                    </li>
+                  );
                 })}
               </ul>
             </div>
@@ -72,6 +95,6 @@ export default function PokemonDetails() {
       ) : (
         <p>Loading Pokémon details...</p>
       )}
-    </div>
+    </>
   );
 }
