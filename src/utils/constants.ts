@@ -4,7 +4,7 @@ export const typeColors: {
 } = {
   normal: { hex: "#A8A77A", isLowContrast: false },
   fire: { hex: "#EE8130", isLowContrast: false },
-  water: { hex: "#6390F0", isLowContrast: false },
+  water: { hex: "#6390F0", isLowContrast: true },
   electric: { hex: "#F7D02C", isLowContrast: false },
   grass: { hex: "#7AC74C", isLowContrast: false },
   ice: { hex: "#96D9D6", isLowContrast: false },
@@ -21,3 +21,5 @@ export const typeColors: {
   steel: { hex: "#B7B7CE", isLowContrast: false },
   fairy: { hex: "#D685AD", isLowContrast: false },
 };
+
+export const initialMoveCount = 6;

@@ -12,6 +12,10 @@
   }
 }
 
+.hidden-move {
+  animation: fadein 400ms;
+}
+
 .pokemon-type {
   padding: var(--padding-xs) var(--padding-s);
   border-radius: 4px;

@@ -1,3 +1,12 @@
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 :root {
   // Variables
   /* Colors */
@@ -41,7 +50,7 @@ button {
   border-radius: 8px;
   text-transform: uppercase;
   font-weight: 500;
-  transition: 50ms background-color ease-in;
+  transition: 100ms background-color ease-in;
 
   @media (min-width: 1024px) {
     padding: var(--padding-m);
@@ -64,7 +73,7 @@ button {
 }
 
 .btn-secondary {
-  background-color: var(--blue-100);
+  // background-color: var(--blue-100);
   border: 1px solid var(--blue-900);
   color: var(--blue-900);
 
@@ -87,6 +96,7 @@ input {
 
 a {
   color: var(--blue-900);
+  transition: color 100ms ease-in-out;
 
   &:hover {
     color: var(--blue-700);

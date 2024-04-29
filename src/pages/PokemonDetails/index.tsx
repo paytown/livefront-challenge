@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import fetchData from "../../utils/fetchData";
 import PokemonType from "../../components/PokemonType";
+import { initialMoveCount } from "../../utils/constants";
 import "./pokemonDetails.scss";
 
 type PokemonDetails = {
@@ -14,7 +15,7 @@ type PokemonDetails = {
 export default function PokemonDetails() {
   const { id } = useParams();
   const [pokemonData, setPokemonData] = useState<PokemonDetails | null>(null);
-  const [moveLimit, setMoveLimit] = useState(6);
+  const [moveLimit, setMoveLimit] = useState(initialMoveCount);
 
   useEffect(() => {
     const fetchPokemonDetails = async () => {
@@ -51,9 +52,18 @@ export default function PokemonDetails() {
             <div>
               <h4>Moves</h4>
               <ul>
-                {pokemonData.moves.slice(0, moveLimit).map((pm) => {
+                {pokemonData.moves.slice(0, moveLimit).map((pm, i) => {
                   const move = pm.move.name;
-                  return <li key={move}>{move}</li>;
+                  const isInitHidden = i + 1 > initialMoveCount;
+
+                  return (
+                    <li
+                      key={move}
+                      className={`move ${isInitHidden ? "hidden-move" : ""}`}
+                    >
+                      {move}
+                    </li>
+                  );
                 })}
               </ul>
               {pokemonData.moves.length > moveLimit && (
